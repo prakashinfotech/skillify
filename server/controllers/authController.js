@@ -7,7 +7,7 @@ const { success, error } = require('../utils/apiResponse')
 const { generateAccessToken, generateRefreshToken } = require('../utils/generateTokens')
 const sendEmail = require('../utils/sendEmail')
 
-const GOOGLE_CALLBACK_URL = 'http://localhost:5000/api/v1/auth/google/callback'
+const GOOGLE_CALLBACK_URL = `${process.env.SERVER_URL}/api/v1/auth/google/callback`
 
 const getGoogleClient = () => new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
@@ -354,7 +354,7 @@ const googleAuth = asyncHandler(async (req, res) => {
 // GET /api/v1/auth/google/callback
 const googleCallback = asyncHandler(async (req, res) => {
   const { code, error: oauthError } = req.query
-  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5175'
+  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173'
 
   if (oauthError || !code) {
     return res.redirect(`${clientUrl}/login?error=google_denied`)
