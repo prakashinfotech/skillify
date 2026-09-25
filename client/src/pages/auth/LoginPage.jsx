@@ -205,7 +205,7 @@ export default function LoginPage() {
 
             {/* Google OAuth */}
             <a
-              href="http://localhost:5000/api/v1/auth/google"
+              href={`${import.meta.env.VITE_API_URL}/api/v1/auth/google`}
               className="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48">
